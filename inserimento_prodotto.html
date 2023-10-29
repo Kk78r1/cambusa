@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Inserisci Prodotto</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Inserisci Prodotto</h1>
+
+        <form id="productForm" action="insert.php" method="post" class="mt-4">
+            <div class="form-group">
+                <label for="productName">Nome del Prodotto:</label>
+                <input type="text" class="form-control" id="productName" name="productName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="productWeight">Peso:</label>
+                <input type="text" class="form-control" id="productWeight" name="productWeight">
+            </div>
+
+            <div class="form-group">
+                <label for="productQuantity">Quantità:</label>
+                <input type="text" class="form-control" id="productQuantity" name="productQuantity">
+            </div>
+
+            <div class="form-group">
+                <label for="productPrice">Prezzo:</label>
+                <input type="text" class="form-control" id="productPrice" name="productPrice">
+            </div>
+
+            <div class="form-group">
+                <label for="isCeliacFriendly">Per Celiaci:</label>
+                <select class="form-control" id="isCeliacFriendly" name="isCeliacFriendly">
+                    <option value="No">No</option>
+                    <option value="Si">Si</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="isLactoseFree">Per Allergici al Lattosio:</label>
+                <select class="form-control" id="isLactoseFree" name="isLactoseFree">
+                    <option value="No">No</option>
+                    <option value="Si">Si</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="isReintegrable">Reintegrabile:</label>
+                <select class="form-control" id="isReintegrable" name="isReintegrable">
+                    <option value="No">No</option>
+                    <option value="Si">Si</option>
+                </select>
+            </div>
+
+            <button type="button" class="btn btn-primary" id="insertProductButton">Inserisci Prodotto</button>
+        </form>
+    </div>
+
+    <div id="confirmationPopup" title="Prodotto inserito con successo">
+        <p id="popupContent">
+            <strong>Prodotto inserito:</strong>
+            <br>Nome: <span id="productNameDisplay"></span>
+            <br>Peso: <span id="productWeightDisplay"></span>
+            <br>Quantità: <span id="productQuantityDisplay"></span>
+            <br>Prezzo: <span id="productPriceDisplay"></span>
+            <br>Per Celiaci: <span id="isCeliacFriendlyDisplay"></span>
+            <br>Per Allergici al Lattosio: <span id="isLactoseFreeDisplay"></span>
+            <br>Reintegrabile: <span id="isReintegrableDisplay"></span>
+        </p>
+    </div>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>

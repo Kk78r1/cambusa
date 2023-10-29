@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Visualizza Prodotti</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Prodotti</h1>
+        <table id="productTable" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nome del Prodotto</th>
+                    <th>Peso/Quantità</th>
+                    <th>Prezzo</th>
+                    <th>Per Celiaci</th>
+                    <th>Per Allergici al Lattosio</th>
+                    <th>Reintegrabile</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Qui verranno visualizzati i dati dei prodotti -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+
+    // Funzione per popolare la tabella con i dati dei prodotti dal database
+    function populateProductTable() {
+        // Effettua una richiesta AJAX per ottenere i dati dei prodotti dal server
+        $.ajax({
+            url: 'get_products.php', // Sostituire con il percorso del file PHP per ottenere i dati
+            method: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                // Rimuovi i dati esistenti dalla tabella
+                $('#productTable tbody').empty();
+
+                // Cicla sui dati dei prodotti e aggiungili alla tabella
+                $.each(data, function(index, product) {
+                    var row = '<tr>' +
+                        '<td>' + product.productName + '</td>' +
+                        '<td>' + (product.productWeight ? product.productWeight : product.productQuantity) + '</td>' +
+                        '<td>' + product.productPrice + '</td>' +
+                        '<td>' + product.isCeliacFriendly + '</td>' +
+                        '<td>' + product.isLactoseFree + '</td>' +
+                        '<td>' + product.isReintegrable + '</td>' +
+                        '</tr>';
+                    $('#productTable tbody').append(row);
+                });
+            },
+            error: function() {
+                alert('Errore durante il recupero dei dati dei prodotti.');
+            }
+        });
+    }
+
+    // Chiamare la funzione per popolare la tabella quando la pagina è pronta
+    $(document).ready(function() {
+        populateProductTable();
+    });
+
+    </script>
+</body>
+</html>
